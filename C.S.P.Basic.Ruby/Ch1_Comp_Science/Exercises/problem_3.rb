@@ -3,8 +3,8 @@
 
     # A palindrom program.
 #----------------------This is how i started the problem. -----------------------
-####This does not have regexes. So, as long as you input letters with spaces (no characters), it should work perfectly.
-#---------- Select all the code and uncommented to be able to use it in the Terminal
+####This does not have regexp. So, as long as you input letters with spaces (no characters), it should work perfectly.
+
 
 
     puts "Please enter a sentence or word: "
@@ -29,7 +29,7 @@
 
 
 #---------    This is a better program to play with, you can enter any word or sentence, and It will tell you if it's a Palindrom
-#---------------  Select all the code and uncommented to be able to use it in the Terminal
+
 
 
 
