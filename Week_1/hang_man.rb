@@ -117,35 +117,53 @@ turns_count = 4
 #selects the a random word from the list and returns a string
 word = word_list.sample
 #this will allow to create the hint 1. Prints out the array with the first and last letter of the word
-word_to_chars = word.chars
+word_to_char = word.chars
 #converts the word into an array of chars
-word_to_set = word.chars.to_set
+word = word.chars.to_set
 #guesses will be store in the array
 guesses = []
+
 #letter allow for every guess
 letter = ("a".."z").to_a
 #input the guess
-puts "Guess the word #{word}: "
+puts "Guess the word #{word_to_char}: "
 guess = gets.chomp.downcase
-# guess1 = gets.chomp.downcase
-# guess2 = gets.chomp.downcase
-# guess3 = gets.chomp.downcase
 #push the guess to the guesses array
-    guesses << guess
-    # guesses<<guess1
-    # guesses<<guess2
-    # guesses<<guess3
+guess = guess.chars
 
-#take the guesses array and convert it to string with no spaces
-guesses_to_string = guesses * ("")
-#take the string of the guesses and convert it to an array of chars
-guesses_back_to_array = guesses_to_string.chars.to_set
+
+# #take the guesses array and convert it to string with no spaces
+guess = guess * ("")
+# #take the string of the guesses and convert it to an array of chars
+guess = guess.chars.to_set
 
 #it will match the the guesses and letter array and return an array of only the matched letters
-guesses_match_letter = guesses_back_to_array & letter
+guesses_match_letter = guess & letter
 #Using subsets
-matched_with_subset = word_to_set.subset?(guesses_back_to_array)
-#convers the string into array of characters, each inside a string
+matched_with_subset = word.subset?(guess)
+#converts the string into array of characters, each inside a string
+
+#I have to create some way where this loop does take the gess above
+
+until word.subset?(guess) do
+    puts "What is the next letter: "
+    guess = gets.chomp.downcase
+binding.pry
+    guess = guess.chars
+    guess = guess * ("")
+    guess = guess.chars.to_set
+    puts "#{guess}"
+    binding.pry
+    if word.subset?(guess)
+        puts "You won"
+    end
+    binding.pry
+    # end
+
+end
+
+
+
 
 
 
