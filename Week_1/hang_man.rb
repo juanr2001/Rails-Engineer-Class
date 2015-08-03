@@ -111,58 +111,61 @@ end
 # #replaces the last element of with the letter of the word
 #     hint1.last.replace(last_letter)
 # # end
-
-#turn allowed
-turns_count = 4
-#selects the a random word from the list and returns a string
-word = word_list.sample
-#this will allow to create the hint 1. Prints out the array with the first and last letter of the word
-word_to_char = word.chars
-#converts the word into an array of chars
-word = word.chars.to_set
-#guesses will be store in the array
-guesses = []
-
-#letter allow for every guess
-letter = ("a".."z").to_a
-#input the guess
-puts "Guess the word #{word_to_char}: "
-guess = gets.chomp.downcase
-#push the guess to the guesses array
-guess = guess.chars
-
-
-# #take the guesses array and convert it to string with no spaces
-guess = guess * ("")
-# #take the string of the guesses and convert it to an array of chars
-guess = guess.chars.to_set
-
-#it will match the the guesses and letter array and return an array of only the matched letters
-guesses_match_letter = guess & letter
-#Using subsets
-matched_with_subset = word.subset?(guess)
-#converts the string into array of characters, each inside a string
-
-#I have to create some way where this loop does take the gess above
-
-until word.subset?(guess) do
-    puts "What is the next letter: "
+def game(word_list)
+    #turn allowed
+    turns_count = 4
+    #selects the a random word from the list and returns a string
+    word = word_list.sample
+    #this will allow to create the hint 1. Prints out the array with the first and last letter of the word
+    word_to_char = word.chars
+    #converts the word into an array of chars
+    word = word.chars.to_set
+    #guesses will be store in the array
+    guesses = []
+    #letter allow for every guess
+    letter = ("a".."z").to_a
+    #input the guess
+    puts "Guess the word #{word_to_char}: "
     guess = gets.chomp.downcase
-binding.pry
+    #push the guess to the guesses array
     guess = guess.chars
-    guess = guess * ("")
-    guess = guess.chars.to_set
-    puts "#{guess}"
+    #pushes the guess to guesses array.
+    guesses << guess
+    guess = guess.to_set
+    # #take the guesses array and convert it to string with no spaces
+    guesses = guesses * ("")
+    # #take the string of the guesses and convert it to an array of chars
+    guesses = guesses.chars.to_set
+
+    #it will match the the guesses and letter array and return an array of only the matched letters
+    guess_match_letter = guess & letter
+    #Using subsets
+    matched_with_subset = word.subset?(guess)
+
     binding.pry
-    if word.subset?(guess)
-        puts "You won"
+    #converts the string into array of characters, each inside a string
+
+    #I have to create some way where this loop does take the gess above
+
+    until word.subset?(guess) do
+        puts "What is the next letter: "
+        guess = gets.chomp.downcase
+    binding.pry
+        guess = guess.chars
+        guess = guess * ("")
+        guess = guess.chars.to_set
+        puts "#{guess}"
+        binding.pry
+        if word.subset?(guess)
+            puts "You won"
+        end
+        binding.pry
+        # end
+
     end
-    binding.pry
-    # end
 
 end
-
-
+game(word_list)
 
 
 
