@@ -142,27 +142,22 @@ def game(word_list)
     #Using subsets
     matched_with_subset = word.subset?(guess)
 
-    binding.pry
-    #converts the string into array of characters, each inside a string
-
     #I have to create some way where this loop does take the gess above
 
-    until word.subset?(guess) do
+    until word.subset?(guesses) do
         puts "What is the next letter: "
         guess = gets.chomp.downcase
-    binding.pry
-        guess = guess.chars
-        guess = guess * ("")
-        guess = guess.chars.to_set
-        puts "#{guess}"
-        binding.pry
-        if word.subset?(guess)
-            puts "You won"
-        end
-        binding.pry
+        guesses << guess
+
+
+        # if word.subset?(guess)
+        #     puts "You won"
+        # end
+        # binding.pry
         # end
 
     end
+        binding.pry
 
 end
 game(word_list)
