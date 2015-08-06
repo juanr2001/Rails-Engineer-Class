@@ -140,26 +140,34 @@ def game(word_list)
     #it will match the the guesses and letter array and return an array of only the matched letters
     guess_match_letter = guess & letter
     #Using subsets
-    matched_with_subset = word.subset?(guess)
+    matched_with_subset = word.subset?(guesses)
 
     #I have to create some way where this loop does take the gess above
 
-    until word.subset?(guesses) do
+#for tomorrow make sure a guesses1 and guesses2 can be in the same set.
+
+    until word.subset?(guesses)
         puts "What is the next letter: "
         guess = gets.chomp.downcase
+        guess = guess.chars
         guesses << guess
+        guesses = guesses.to_a
+        guesses = guesses*("")
+        guesses= guesses.chars.to_set
 
-
-        # if word.subset?(guess)
-        #     puts "You won"
-        # end
-        # binding.pry
-        # end
+        if word.subset?(guesses)
+            puts "You won"
+        end
 
     end
-        binding.pry
+
+binding.pry
+end
+
+def letter_included_in_word?(word_list)
 
 end
+
 game(word_list)
 
 
